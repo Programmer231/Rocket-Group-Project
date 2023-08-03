@@ -1,3 +1,4 @@
+import Card from "@/components/Card";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import Link from "next/link";
@@ -18,9 +19,9 @@ export default function Home() {
 
       const data = await resData.json();
 
-      console.log(data);
-
       setAllEvents(data.events);
+
+      console.log(data.events);
     };
 
     fetchEvents();
@@ -32,11 +33,30 @@ export default function Home() {
         <title>Event Scheduler</title>
       </Head>
       <main>
-        <div className="bg-red-500">
+        <div>
           <Navbar />
-          {allEvents.map((event: any) => {
-            return <h1 key={event._id}>{event.name}</h1>;
-          })}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              justifyContent: "space-around",
+              margin: "50px auto",
+              gap: "10px",
+              width: "90%",
+            }}
+          >
+            {allEvents.map((event: any) => {
+              return (
+                <Card
+                  key={event._id}
+                  image={event["image"]}
+                  description={event.description}
+                  address={event.address}
+                  name={event.name}
+                />
+              );
+            })}
+          </div>
         </div>
       </main>
     </>

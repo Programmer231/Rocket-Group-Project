@@ -41,7 +41,7 @@ const Event = () => {
 
     try {
       const success = await fetch(
-        "http://localhost:4000/api/event/createEvent",
+        "https://api.planetearthlawncare.org/api/event/createEvent",
         {
           method: "POST",
           body: JSON.stringify(newEvent),
