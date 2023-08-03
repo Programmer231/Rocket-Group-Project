@@ -5,7 +5,7 @@ const Navbar = (props: any) => {
   useEffect(() => {
     const fetchEvents = async () => {
       const resData = await fetch(
-        "https://api.planetearthlawncare.org/api/event/getUser",
+        "https://api.planetearthlawncare.org/api/user/getUser",
         {
           method: "GET",
           credentials: "include",
