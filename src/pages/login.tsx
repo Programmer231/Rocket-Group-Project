@@ -21,6 +21,7 @@ const Login = () => {
     event.preventDefault();
 
     const userCredentials = { username: username, password: password };
+
     try {
       const success = await fetch(
         "https://api.planetearthlawncare.org/api/user/login",

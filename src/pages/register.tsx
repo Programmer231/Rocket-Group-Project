@@ -8,6 +8,7 @@ const Register = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
 
   const setUsernameHandler = (value: string) => {
     setUsername(value);
@@ -17,20 +18,35 @@ const Register = () => {
     setPassword(value);
   };
 
-  const loginHandler = async (event: FormEvent) => {
+  const setAddressHandler = (value: string) => {
+    setAddress(value);
+  };
+  const registerHandler = async (event: FormEvent) => {
+    console.log("Username is", username);
+    console.log("Password is", password);
+    console.log("Address is", address);
     event.preventDefault();
 
-    const userCredentials = { username: username, password: password };
+    const userCredentials = {
+      username: username,
+      password: password,
+      address: address,
+    };
+
     try {
-      const success = await fetch(
-        "https://api.planetearthlawncare.org/api/user/login",
+      const resData = await fetch(
+        "https://api.planetearthlawncare.org/api/user/register",
         {
           method: "POST",
           body: JSON.stringify(userCredentials),
           headers: { "Content-Type": "application/json" },
           credentials: "include",
         }
-      ).then((res) => res.json());
+      );
+
+      const res = await resData.json();
+
+      console.log(res);
     } catch (err) {
       console.log(err);
     }
@@ -53,7 +69,7 @@ const Register = () => {
       >
         Back
       </button>
-      <h1 style={{ textAlign: "center", fontSize: "5rem" }}>Login</h1>
+      <h1 style={{ textAlign: "center", fontSize: "5rem" }}>Register</h1>
       <div
         style={{
           display: "flex",
@@ -65,7 +81,7 @@ const Register = () => {
       >
         <form
           style={{ width: "100%" }}
-          onSubmit={(event) => loginHandler(event)}
+          onSubmit={(event) => registerHandler(event)}
         >
           <div
             style={{
@@ -115,6 +131,33 @@ const Register = () => {
               type="password"
               onChange={(event) => setPasswordHandler(event.target.value)}
               value={password}
+            />
+          </div>
+          <div
+            style={{
+              display: "grid",
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: ".5rem",
+              margin: "auto",
+            }}
+          >
+            <Label
+              htmlFor="address"
+              style={{
+                fontWeight: "bold",
+                fontSize: "2rem",
+                marginTop: "70px",
+              }}
+            >
+              Address
+            </Label>
+            <Input
+              id="address"
+              type="text"
+              onChange={(event) => setAddressHandler(event.target.value)}
+              value={address}
             />
           </div>
           <button
