@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = (props: any) => {
   return (
     <div
       style={{
@@ -18,16 +18,21 @@ const Navbar = () => {
           width: "70%",
         }}
       >
-        <Link
-          href="/login"
-          style={{
-            fontSize: "2rem",
-            textDecoration: "none",
-            color: "black",
-          }}
-        >
-          Login
-        </Link>
+        {
+          <div>
+            <Link
+              href="/login"
+              style={{
+                fontSize: "2rem",
+                textDecoration: "none",
+                color: "black",
+              }}
+            >
+              Login
+            </Link>
+            <Link href="/register"></Link>
+          </div>
+        }
         <Link
           href="/"
           style={{

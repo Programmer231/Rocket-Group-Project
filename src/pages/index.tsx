@@ -20,8 +20,6 @@ export default function Home() {
       const data = await resData.json();
 
       setAllEvents(data.events);
-
-      console.log(data.events);
     };
 
     fetchEvents();
@@ -38,10 +36,9 @@ export default function Home() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              justifyContent: "space-around",
+              gridTemplateColumns: "repeat(4, 1fr)",
               margin: "50px auto",
-              gap: "10px",
+              gap: "50px",
               width: "90%",
             }}
           >
