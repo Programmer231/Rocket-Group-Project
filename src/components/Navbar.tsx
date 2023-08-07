@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 const Navbar = (props: any) => {
   const [user, setUser] = useState<any>();
 
+  const [loggedIn, setLoggedIn] = useState(false);
+
   useEffect(() => {
     const fetchEvents = async () => {
       const resData = await fetch(
@@ -22,7 +24,18 @@ const Navbar = (props: any) => {
     };
 
     fetchEvents();
-  }, []);
+    setLoggedIn(true);
+  }, [loggedIn]);
+
+  const handleLogoutClicked = async () => {
+    await fetch("https://api.planetearthlawncare.org/api/user/logout", {
+      method: "POST",
+      credentials: "include",
+    });
+
+    setLoggedIn(false);
+  };
+
   return (
     <div
       style={{
@@ -65,9 +78,12 @@ const Navbar = (props: any) => {
             </Link>
           </div>
         ) : (
-          <div>
-            <img src={user.image} style={{ objectFit: "contain" }}></img>
-            <h1>{user.username}</h1>
+          <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+            <div>
+              <img src={user.image}></img>
+              <h1>{user.username}</h1>
+            </div>
+            <button onClick={handleLogoutClicked}>Logout</button>
           </div>
         )}
         <Link
