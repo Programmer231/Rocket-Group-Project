@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Navbar = (props: any) => {
+  const [user, setUser] = useState<any>();
+
   useEffect(() => {
     const fetchEvents = async () => {
       const resData = await fetch(
@@ -14,7 +16,9 @@ const Navbar = (props: any) => {
 
       const data = await resData.json();
 
-      console.log(data);
+      setUser(data.user);
+
+      console.log(data.user);
     };
 
     fetchEvents();
@@ -36,7 +40,7 @@ const Navbar = (props: any) => {
           width: "70%",
         }}
       >
-        {
+        {!user ? (
           <div>
             <Link
               href="/login"
@@ -60,7 +64,12 @@ const Navbar = (props: any) => {
               Register
             </Link>
           </div>
-        }
+        ) : (
+          <div>
+            <img src={user.image} style={{ objectFit: "contain" }}></img>
+            <h1>{user.username}</h1>
+          </div>
+        )}
         <Link
           href="/"
           style={{
