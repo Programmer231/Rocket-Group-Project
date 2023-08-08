@@ -7,31 +7,37 @@ const UpdateUser = () => {
   const router = useRouter();
 
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const setUsernameHandler = (value: string) => {
     setUsername(value);
   };
 
-  const setPasswordHandler = (value: string) => {
-    setPassword(value);
+  const setAddressHandler = (value: string) => {
+    setAddress(value);
   };
 
-  const loginHandler = async (event: FormEvent) => {
+  const setImageUrlHandler = (value: string) => {
+    setImageUrl(value);
+  };
+
+  const UpdateUserHandler = async (event: FormEvent) => {
     event.preventDefault();
 
-    const userCredentials = { username: username, password: password };
+    const userCredentials = {
+      username: username,
+      address: address,
+      imageUrl: imageUrl,
+    };
 
     try {
-      const res = await fetch(
-        "https://api.planetearthlawncare.org/api/user/login",
-        {
-          method: "POST",
-          body: JSON.stringify(userCredentials),
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-        }
-      );
+      const res = await fetch("http://localhost:4000/api/user/updateUser", {
+        method: "POST",
+        body: JSON.stringify(userCredentials),
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
 
       const success = await res.json();
 
@@ -72,7 +78,7 @@ const UpdateUser = () => {
       >
         <form
           style={{ width: "100%" }}
-          onSubmit={(event) => loginHandler(event)}
+          onSubmit={(event) => UpdateUserHandler(event)}
         >
           <div
             style={{
@@ -104,24 +110,43 @@ const UpdateUser = () => {
               justifyContent: "center",
               alignItems: "center",
               gap: ".5rem",
-              margin: "auto",
+              marginTop: "50px",
             }}
           >
             <Label
-              htmlFor="password"
-              style={{
-                fontWeight: "bold",
-                fontSize: "2rem",
-                marginTop: "70px",
-              }}
+              htmlFor="address"
+              style={{ fontWeight: "bold", fontSize: "2rem" }}
             >
-              Password
+              Address
             </Label>
             <Input
-              id="password"
-              type="password"
-              onChange={(event) => setPasswordHandler(event.target.value)}
-              value={password}
+              id="address"
+              type="text"
+              onChange={(event) => setAddressHandler(event.target.value)}
+              value={address}
+            />
+          </div>
+          <div
+            style={{
+              display: "grid",
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: ".5rem",
+              marginTop: "50px",
+            }}
+          >
+            <Label
+              htmlFor="image Url"
+              style={{ fontWeight: "bold", fontSize: "2rem" }}
+            >
+              Image Url
+            </Label>
+            <Input
+              id="image Url"
+              type="text"
+              onChange={(event) => setImageUrlHandler(event.target.value)}
+              value={imageUrl}
             />
           </div>
           <button
