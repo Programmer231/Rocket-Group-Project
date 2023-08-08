@@ -32,12 +32,15 @@ const UpdateUser = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:4000/api/user/updateUser", {
-        method: "POST",
-        body: JSON.stringify(userCredentials),
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      });
+      const res = await fetch(
+        "https://api.planetearthlawncare.org/api/user/updateUser",
+        {
+          method: "POST",
+          body: JSON.stringify(userCredentials),
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+        }
+      );
 
       const success = await res.json();
 
