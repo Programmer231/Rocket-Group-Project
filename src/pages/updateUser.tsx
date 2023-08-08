@@ -3,7 +3,7 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 
-const updateUser = () => {
+const UpdateUser = () => {
   const router = useRouter();
 
   const [username, setUsername] = useState("");
@@ -144,4 +144,4 @@ const updateUser = () => {
   );
 };
 
-export default updateUser;
+export default UpdateUser;
