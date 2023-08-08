@@ -23,7 +23,7 @@ const Login = () => {
     const userCredentials = { username: username, password: password };
 
     try {
-      const success = await fetch(
+      const res = await fetch(
         "https://api.planetearthlawncare.org/api/user/login",
         {
           method: "POST",
@@ -31,7 +31,13 @@ const Login = () => {
           headers: { "Content-Type": "application/json" },
           credentials: "include",
         }
-      ).then((res) => res.json());
+      );
+
+      const success = await res.json();
+
+      if (success["success"]) {
+        router.replace("/");
+      }
     } catch (err) {
       console.log(err);
     }

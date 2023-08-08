@@ -3,12 +3,11 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 
-const Register = () => {
+const updateUser = () => {
   const router = useRouter();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("");
 
   const setUsernameHandler = (value: string) => {
     setUsername(value);
@@ -18,21 +17,14 @@ const Register = () => {
     setPassword(value);
   };
 
-  const setAddressHandler = (value: string) => {
-    setAddress(value);
-  };
-  const registerHandler = async (event: FormEvent) => {
+  const loginHandler = async (event: FormEvent) => {
     event.preventDefault();
 
-    const userCredentials = {
-      username: username,
-      password: password,
-      address: address,
-    };
+    const userCredentials = { username: username, password: password };
 
     try {
-      const resData = await fetch(
-        "https://api.planetearthlawncare.org/api/user/register",
+      const res = await fetch(
+        "https://api.planetearthlawncare.org/api/user/login",
         {
           method: "POST",
           body: JSON.stringify(userCredentials),
@@ -41,9 +33,9 @@ const Register = () => {
         }
       );
 
-      const res = await resData.json();
+      const success = await res.json();
 
-      if (res.success) {
+      if (success["success"]) {
         router.replace("/");
       }
     } catch (err) {
@@ -68,7 +60,7 @@ const Register = () => {
       >
         Back
       </button>
-      <h1 style={{ textAlign: "center", fontSize: "5rem" }}>Register</h1>
+      <h1 style={{ textAlign: "center", fontSize: "5rem" }}>Update User</h1>
       <div
         style={{
           display: "flex",
@@ -80,7 +72,7 @@ const Register = () => {
       >
         <form
           style={{ width: "100%" }}
-          onSubmit={(event) => registerHandler(event)}
+          onSubmit={(event) => loginHandler(event)}
         >
           <div
             style={{
@@ -132,33 +124,6 @@ const Register = () => {
               value={password}
             />
           </div>
-          <div
-            style={{
-              display: "grid",
-              width: "100%",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: ".5rem",
-              margin: "auto",
-            }}
-          >
-            <Label
-              htmlFor="address"
-              style={{
-                fontWeight: "bold",
-                fontSize: "2rem",
-                marginTop: "70px",
-              }}
-            >
-              Address
-            </Label>
-            <Input
-              id="address"
-              type="text"
-              onChange={(event) => setAddressHandler(event.target.value)}
-              value={address}
-            />
-          </div>
           <button
             style={{
               cursor: "pointer",
@@ -171,7 +136,7 @@ const Register = () => {
             }}
             type="submit"
           >
-            Register
+            Update User
           </button>
         </form>
       </div>
@@ -179,4 +144,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default updateUser;

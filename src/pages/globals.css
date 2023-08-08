@@ -7,10 +7,15 @@
   src: url("../../public/BungeeSpice-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "otherFont";
+  src: url("../../public/RussoOne-Regular.ttf") format("truetype");
+}
+
 body {
   width: 100%;
   box-sizing: border-box;
-  font-family: "monospace", "serif";
+  font-family: "otherFont", "serif";
   font-size: 1rem;
   margin: 0;
   padding: 0;

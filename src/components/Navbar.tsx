@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const Navbar = (props: any) => {
   const [user, setUser] = useState<any>();
 
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const fetchEvents = async () => {
+  const fetchEvents = useCallback(async () => {
+    try {
       const resData = await fetch(
         "https://api.planetearthlawncare.org/api/user/getUser",
         {
@@ -19,21 +17,21 @@ const Navbar = (props: any) => {
       const data = await resData.json();
 
       setUser(data.user);
+    } catch {
+      setUser(null);
+    }
+  }, []);
 
-      console.log(data.user);
-    };
-
+  useEffect(() => {
     fetchEvents();
-    setLoggedIn(true);
-  }, [loggedIn]);
+  }, []);
 
   const handleLogoutClicked = async () => {
     await fetch("https://api.planetearthlawncare.org/api/user/logout", {
       method: "POST",
       credentials: "include",
     });
-
-    setLoggedIn(false);
+    fetchEvents();
   };
 
   return (
@@ -79,11 +77,23 @@ const Navbar = (props: any) => {
           </div>
         ) : (
           <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-            <div>
-              <img src={user.image}></img>
-              <h1>{user.username}</h1>
+            <div style={{}}>
+              <img
+                src={user.image}
+                style={{ width: "100px", borderRadius: "50%", padding: "10px" }}
+              ></img>
+              <h1 style={{ textAlign: "center" }}>{user.username}</h1>
             </div>
-            <button onClick={handleLogoutClicked}>Logout</button>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-around",
+              }}
+            >
+              <button onClick={handleLogoutClicked}>Logout</button>
+              <Link href="/updateUser">Update User</Link>
+            </div>
           </div>
         )}
         <Link
