@@ -1,28 +1,26 @@
 import EventCard from "@/components/EventCard";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Home() {
   const [allEvents, setAllEvents] = useState([]);
 
+  const fetchEvents = useCallback(async () => {
+    const resData = await fetch(
+      "https://api.planetearthlawncare.org/api/event/getEvents",
+      {
+        method: "GET",
+        credentials: "include",
+      }
+    );
+
+    const data = await resData.json();
+
+    setAllEvents(data.events);
+  }, []);
+
   useEffect(() => {
-    const fetchEvents = async () => {
-      const resData = await fetch(
-        "https://api.planetearthlawncare.org/api/event/getEvents",
-        {
-          method: "GET",
-          credentials: "include",
-        }
-      );
-
-      const data = await resData.json();
-
-      console.log(data);
-
-      setAllEvents(data.events);
-    };
-
     fetchEvents();
   }, []);
 
@@ -35,6 +33,8 @@ export default function Home() {
         credentials: "include",
       }
     );
+
+    fetchEvents();
   };
 
   return (

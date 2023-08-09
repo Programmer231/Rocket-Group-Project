@@ -48,7 +48,13 @@ const Event = () => {
           headers: { "Content-Type": "application/json" },
           credentials: "include",
         }
-      ).then((res) => res.json());
+      );
+
+      const data = await success.json();
+
+      if (data.success) {
+        router.push("/");
+      }
 
       console.log(success);
     } catch (err) {
