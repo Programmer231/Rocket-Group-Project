@@ -44,10 +44,15 @@ const Events = () => {
                   alignItems: "start",
                   justifyContent: "start",
                 }}
+                key={user._id}
               >
                 <div style={{ padding: "30px" }}>
                   <h1>{user.username}</h1>
-                  <img src={user.image} style={{ width: "300px" }}></img>
+                  <img
+                    src={user.image}
+                    style={{ width: "300px" }}
+                    alt="User Image"
+                  ></img>
                 </div>
                 <div
                   style={{
