@@ -16,7 +16,7 @@ const Events = () => {
       );
 
       const userData = await data.json();
-      setAllUsers(userData.events);
+      setAllUsers(userData.users);
 
       console.log(userData);
     };
@@ -70,8 +70,6 @@ const Events = () => {
                         description={event.description}
                         address={event.address}
                         name={event.name}
-                        creator={event.creator}
-                        users={event.users}
                       />
                     );
                   })}

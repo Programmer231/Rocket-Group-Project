@@ -17,6 +17,8 @@ export default function Home() {
 
     const data = await resData.json();
 
+    console.log(data);
+
     setAllEvents(data.events);
   }, []);
 
