@@ -67,7 +67,6 @@ const Login = () => {
           alignItems: "center",
           justifyContent: "flex-start",
           flexDirection: "column",
-          minWidth: "800px",
         }}
       >
         <form
@@ -77,7 +76,7 @@ const Login = () => {
           <div
             style={{
               display: "grid",
-              width: "100%",
+              width: "90%",
               justifyContent: "center",
               alignItems: "center",
               gap: ".5rem",
@@ -100,7 +99,7 @@ const Login = () => {
           <div
             style={{
               display: "grid",
-              width: "100%",
+              width: "90%",
               justifyContent: "center",
               alignItems: "center",
               gap: ".5rem",

@@ -10,23 +10,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <input
         type={type}
-        style={{
-          display: "flex",
-          width: "100%",
-          borderRadius: "0.375rem",
-          border: "1px solid #E5E7EB",
-          background: "rgba(200, 200, 200, 0.5)",
-          padding: "0.75rem 0.5rem",
-          fontSize: "5rem",
-          outlineOffset: "2px",
-          borderColor: "transparent",
-          borderWidth: "0",
-          fontWeight: "bold",
-          color: "black",
-          boxShadow: "0 0 0 2px white, 0 0 0 4px #E5E7EB",
-          opacity: "0.5",
-          minWidth: "400px",
-        }}
+        className="lg:flex rounded-lg border-2 border-gray-300 bg-gray-200 bg-opacity-50 p-3 text-5xl font-bold outline-offset-2 focus:border-transparent focus:border-0 font-black text-black shadow-md opacity-50 min-w-[400px]"
         ref={ref}
         {...props}
       />

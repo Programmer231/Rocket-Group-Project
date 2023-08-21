@@ -13,7 +13,7 @@ const EventCard = (props: any) => {
         margin: "20px",
       }}
     >
-      <div style={{ width: "400px" }}>
+      <div style={{ maxWidth: "400px" }}>
         <img src={props.image} style={{ maxWidth: "200px" }} />
         <h1 style={{ fontSize: "24px", marginBottom: "10px" }}>{props.name}</h1>
 

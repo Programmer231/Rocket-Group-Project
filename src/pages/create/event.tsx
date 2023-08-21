@@ -72,7 +72,7 @@ const Event = () => {
         <div
           style={{
             display: "grid",
-            width: "100%",
+            width: "90%",
             justifyContent: "center",
             alignItems: "center",
             gap: "1rem",
@@ -89,7 +89,7 @@ const Event = () => {
         <div
           style={{
             display: "grid",
-            width: "100%",
+            width: "90%",
             justifyContent: "center",
             alignItems: "center",
             gap: "1rem",
@@ -105,7 +105,7 @@ const Event = () => {
         <div
           style={{
             display: "grid",
-            width: "100%",
+            width: "90%",
             justifyContent: "center",
             alignItems: "center",
             gap: "1rem",
@@ -123,7 +123,7 @@ const Event = () => {
         <div
           style={{
             display: "grid",
-            width: "100%",
+            width: "90%",
             justifyContent: "center",
             alignItems: "center",
             gap: "1rem",
