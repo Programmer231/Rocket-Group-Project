@@ -17,8 +17,8 @@ const EventCard = (props: any) => {
         <img src={props.image} style={{ maxWidth: "200px" }} />
         <h1 style={{ fontSize: "24px", marginBottom: "10px" }}>{props.name}</h1>
 
-        <div style={{ fontSize: "16px" }}>{props.description}</div>
-        <div>{props.address}</div>
+        <div style={{ fontSize: "20px" }}>{props.description}</div>
+        <div style={{ fontSize: "15px" }}>{props.address}</div>
       </div>
     </div>
   );

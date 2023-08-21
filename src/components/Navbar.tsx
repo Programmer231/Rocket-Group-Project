@@ -56,7 +56,6 @@ const Navbar = (props: any) => {
             <Link
               href="/login"
               style={{
-                fontSize: "2rem",
                 textDecoration: "none",
                 color: "black",
               }}
@@ -66,7 +65,6 @@ const Navbar = (props: any) => {
             <Link
               href="/register"
               style={{
-                fontSize: "2rem",
                 textDecoration: "none",
                 color: "black",
                 marginLeft: "10px",
@@ -99,7 +97,6 @@ const Navbar = (props: any) => {
         <Link
           href="/"
           style={{
-            fontSize: "4rem",
             fontFamily: "mainFont",
             textDecoration: "none",
             padding: "2rem",
@@ -120,7 +117,6 @@ const Navbar = (props: any) => {
         <Link
           href="/create/event"
           style={{
-            fontSize: "2rem",
             textDecoration: "none",
             color: "black",
           }}
@@ -130,7 +126,6 @@ const Navbar = (props: any) => {
         <Link
           href="/Events"
           style={{
-            fontSize: "2rem",
             textDecoration: "none",
             color: "black",
           }}

@@ -17,8 +17,8 @@ const EventCard = (props: any) => {
         <img src={props.image} />
         <h1 style={{ fontSize: "24px", marginBottom: "10px" }}>{props.name}</h1>
 
-        <div style={{ fontSize: "16px" }}>{props.description}</div>
-        <div>{props.address}</div>
+        <div style={{ fontSize: "20px" }}>{props.description}</div>
+        <div style={{ fontSize: "15px" }}>{props.address}</div>
       </div>
 
       <div style={{ width: "100%", marginTop: "50px", textAlign: "center" }}>
@@ -30,13 +30,14 @@ const EventCard = (props: any) => {
         >
           Created by: {props.creator.username}
         </h1>
-        <p>Address: {props.creator.address}</p>
+        <p style={{ fontSize: "15px" }}>Address: {props.creator.address}</p>
         <button
           style={{
             borderBottom: "10px double #ff6550",
             textAlign: "center",
             marginTop: "50px",
             width: "50%",
+            fontSize: "20px",
           }}
           onClick={() => props.handleEvent(props.id)}
         >
@@ -66,7 +67,7 @@ const EventCard = (props: any) => {
                   src={user.image}
                   style={{ width: "80px", display: "inline" }}
                 />
-                <h1>{user.username}</h1>
+                <h1 style={{ fontSize: "20px" }}>{user.username}</h1>
               </div>
             );
           })}

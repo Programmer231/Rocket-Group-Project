@@ -16,8 +16,20 @@ body {
   width: 100%;
   box-sizing: border-box;
   font-family: "otherFont", "serif";
-  font-size: 1rem;
+  font-size: 0.5rem;
   margin: 0;
   padding: 0;
   background-color: "#0FCD3A";
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: "otherFont", "serif";
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+    background-color: "#0FCD3A";
+  }
 }

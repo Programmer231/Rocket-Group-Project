@@ -2,6 +2,7 @@ import EventCard from "@/components/EventCard";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import { useCallback, useEffect, useState } from "react";
+import classes from "../components/css/grid.module.css";
 
 export default function Home() {
   const [allEvents, setAllEvents] = useState([]);
@@ -47,15 +48,7 @@ export default function Home() {
       <main>
         <div>
           <Navbar />
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              margin: "50px auto",
-              gap: "50px",
-              width: "90%",
-            }}
-          >
+          <div className="grid lg:grid-cols-3 sm:grid-cols-1 w-[90%] gap-[50px] mx-auto my-[50px] ">
             {
               // We have an array of objects of events. The .map() function takes a callback function which feeds us a default parameter that accepts every item in an array 1 by 1.
               // In our case, these items are Javascript objects. We need to get the values from the keys of this javascript object and pass them to the html component so we can render data.
