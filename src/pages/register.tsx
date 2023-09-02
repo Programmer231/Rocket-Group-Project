@@ -32,7 +32,7 @@ const Register = () => {
 
     try {
       const resData = await fetch(
-        "https://api.planetearthlawncare.org/api/user/register",
+        "https://event.planetearthlawncare.org/api/user/register",
         {
           method: "POST",
           body: JSON.stringify(userCredentials),

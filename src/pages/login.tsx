@@ -24,7 +24,7 @@ const Login = () => {
 
     try {
       const res = await fetch(
-        "https://api.planetearthlawncare.org/api/user/login",
+        "https://event.planetearthlawncare.org/api/user/login",
         {
           method: "POST",
           body: JSON.stringify(userCredentials),

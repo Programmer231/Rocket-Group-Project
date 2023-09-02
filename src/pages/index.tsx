@@ -9,7 +9,7 @@ export default function Home() {
 
   const fetchEvents = useCallback(async () => {
     const resData = await fetch(
-      "https://api.planetearthlawncare.org/api/event/getEvents",
+      "https://event.planetearthlawncare.org/api/event/getEvents",
       {
         method: "GET",
         credentials: "include",
@@ -29,7 +29,7 @@ export default function Home() {
 
   const handleEventClicked = async (eventId: string) => {
     await fetch(
-      `https://api.planetearthlawncare.org/api/event/addEvent/${eventId}`,
+      `https://event.planetearthlawncare.org/api/event/addEvent/${eventId}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -8,7 +8,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       const data = await fetch(
-        "https://api.planetearthlawncare.org/api/event/userEvents",
+        "https://event.planetearthlawncare.org/api/event/userEvents",
         {
           method: "GET",
           credentials: "include",

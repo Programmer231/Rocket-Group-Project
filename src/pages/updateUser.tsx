@@ -33,7 +33,7 @@ const UpdateUser = () => {
 
     try {
       const res = await fetch(
-        "https://api.planetearthlawncare.org/api/user/updateUser",
+        "https://event.planetearthlawncare.org/api/user/updateUser",
         {
           method: "POST",
           body: JSON.stringify(userCredentials),
