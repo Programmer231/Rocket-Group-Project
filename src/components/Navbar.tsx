@@ -7,7 +7,7 @@ const Navbar = (props: any) => {
   const fetchEvents = useCallback(async () => {
     try {
       const resData = await fetch(
-        "https://api.planetearthlawncare.org/api/user/getUser",
+        "https://event.planetearthlawncare.org/api/user/getUser",
         {
           method: "GET",
           credentials: "include",
@@ -27,7 +27,7 @@ const Navbar = (props: any) => {
   }, []);
 
   const handleLogoutClicked = async () => {
-    await fetch("https://api.planetearthlawncare.org/api/user/logout", {
+    await fetch("https://event.planetearthlawncare.org/api/user/logout", {
       method: "POST",
       credentials: "include",
     });
